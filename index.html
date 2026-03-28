@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wordle</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Wordle</h1>
+
+        <!-- TODO: Create the game board -->
+        <!-- The board needs:
+             - A div with class "board"
+             - Inside: 6 row divs (class "row")
+             - Inside each row: 5 tile divs (class "tile")
+        -->
+        <div class="board">
+            <!-- Your rows and tiles go here -->
+        </div>
+
+        <!-- Message area for win/lose messages -->
+        <div id="message"></div>
+
+        <!-- TODO: Create the keyboard -->
+        <!-- The keyboard needs:
+             - A div with class "keyboard"
+             - 3 rows of buttons:
+               Row 1: Q W E R T Y U I O P
+               Row 2: A S D F G H J K L
+               Row 3: ENTER Z X C V B N M ⌫
+             - Each letter is a <button> with class "key"
+             - ENTER button also has class "wide"
+             - Backspace (⌫) button also has class "wide"
+        -->
+        <div class="keyboard">
+            <!-- Your keyboard rows go here -->
+        </div>
+    </div>
+
+    <!-- Game scripts - order matters! -->
+    <script src="words.js"></script>
+    <script src="game.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

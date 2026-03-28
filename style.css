@@ -1,0 +1,188 @@
+/* Color variables - use these in your CSS */
+:root {
+    --correct: #538d4e;      /* Green - letter is correct */
+    --misplaced: #b59f3b;    /* Yellow - letter is in word but wrong spot */
+    --wrong: #3a3a3c;        /* Dark gray - letter not in word */
+    --empty: #121213;        /* Background color */
+    --border: #3a3a3c;       /* Tile border color */
+    --text: #ffffff;         /* Text color */
+    --key-bg: #818384;       /* Keyboard key background */
+}
+
+/* Base styles - provided */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--empty);
+    color: var(--text);
+    font-family: 'Arial', sans-serif;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    letter-spacing: 0.2rem;
+}
+
+#message {
+    height: 30px;
+    margin: 20px 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* ===========================================
+   TODO: BOARD STYLES
+   =========================================== */
+
+/*
+   .board should use flexbox to stack rows vertically
+   - display: flex
+   - flex-direction: ? (hint: we want a column of rows)
+   - align-items: center
+   - gap: 5px
+*/
+.board {
+    /* Your flexbox code here */
+}
+
+/*
+   .row should use flexbox to arrange tiles horizontally
+   - display: flex
+   - gap: 5px
+*/
+.row {
+    /* Your flexbox code here */
+}
+
+/* Tile base styles - provided */
+.tile {
+    width: 62px;
+    height: 62px;
+    border: 2px solid var(--border);
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    /* Center the letter in the tile */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ===========================================
+   TODO: TILE STATE CLASSES
+   =========================================== */
+
+/*
+   When a tile has a letter, it gets class "filled"
+   - Add a lighter border color: #565758
+*/
+.tile.filled {
+    /* Your code here */
+}
+
+/*
+   .correct - green background for correct letters
+   - background-color: use the --correct variable
+   - border-color: use the --correct variable
+*/
+.correct {
+    /* Your code here */
+}
+
+/*
+   .misplaced - yellow background for misplaced letters
+   - background-color: use the --misplaced variable
+   - border-color: use the --misplaced variable
+*/
+.misplaced {
+    /* Your code here */
+}
+
+/*
+   .wrong - dark gray background for wrong letters
+   - background-color: use the --wrong variable
+   - border-color: use the --wrong variable
+*/
+.wrong {
+    /* Your code here */
+}
+
+/* ===========================================
+   TODO: KEYBOARD STYLES
+   =========================================== */
+
+/*
+   .keyboard should use flexbox to stack key rows vertically
+   - display: flex
+   - flex-direction: column
+   - align-items: center
+   - gap: 8px
+*/
+.keyboard {
+    margin-top: 20px;
+    /* Your flexbox code here */
+}
+
+/*
+   .keyboard-row should use flexbox to arrange keys horizontally
+   - display: flex
+   - gap: 6px
+*/
+.keyboard-row {
+    /* Your flexbox code here */
+}
+
+/* Key base styles - provided */
+.key {
+    min-width: 43px;
+    height: 58px;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--key-bg);
+    color: var(--text);
+    font-size: 0.85rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+
+    /* Center the letter */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.key:hover {
+    opacity: 0.8;
+}
+
+.key.wide {
+    min-width: 65px;
+    font-size: 0.75rem;
+}
+
+/* Keyboard keys also get colored after guesses */
+.key.correct {
+    background-color: var(--correct);
+}
+
+.key.misplaced {
+    background-color: var(--misplaced);
+}
+
+.key.wrong {
+    background-color: var(--wrong);
+}

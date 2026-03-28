@@ -1,0 +1,156 @@
+/* Color variables - use these in your CSS */
+:root {
+    --correct: #538d4e;      /* Green - letter is correct */
+    --misplaced: #b59f3b;    /* Yellow - letter is in word but wrong spot */
+    --wrong: #3a3a3c;        /* Dark gray - letter not in word */
+    --empty: #121213;        /* Background color */
+    --border: #3a3a3c;       /* Tile border color */
+    --text: #ffffff;         /* Text color */
+    --key-bg: #818384;       /* Keyboard key background */
+}
+
+/* Base styles - provided */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--empty);
+    color: var(--text);
+    font-family: 'Arial', sans-serif;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    letter-spacing: 0.2rem;
+}
+
+#message {
+    height: 30px;
+    margin: 20px 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* ===========================================
+   BOARD STYLES - SOLUTION
+   =========================================== */
+
+.board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.row {
+    display: flex;
+    gap: 5px;
+}
+
+/* Tile base styles - provided */
+.tile {
+    width: 62px;
+    height: 62px;
+    border: 2px solid var(--border);
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    /* Center the letter in the tile */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ===========================================
+   TILE STATE CLASSES - SOLUTION
+   =========================================== */
+
+.tile.filled {
+    border-color: #565758;
+}
+
+.correct {
+    background-color: var(--correct);
+    border-color: var(--correct);
+}
+
+.misplaced {
+    background-color: var(--misplaced);
+    border-color: var(--misplaced);
+}
+
+.wrong {
+    background-color: var(--wrong);
+    border-color: var(--wrong);
+}
+
+/* ===========================================
+   KEYBOARD STYLES - SOLUTION
+   =========================================== */
+
+.keyboard {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.keyboard-row {
+    display: flex;
+    gap: 6px;
+}
+
+/* Key base styles - provided */
+.key {
+    min-width: 43px;
+    height: 58px;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--key-bg);
+    color: var(--text);
+    font-size: 0.85rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+
+    /* Center the letter */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.key:hover {
+    opacity: 0.8;
+}
+
+.key.wide {
+    min-width: 65px;
+    font-size: 0.75rem;
+}
+
+/* Keyboard keys also get colored after guesses */
+.key.correct {
+    background-color: var(--correct);
+}
+
+.key.misplaced {
+    background-color: var(--misplaced);
+}
+
+.key.wrong {
+    background-color: var(--wrong);
+}
