@@ -49,10 +49,6 @@ h1 {
 
 /*
    .board should use flexbox to stack rows vertically
-   - display: flex
-   - flex-direction: ? (hint: we want a column of rows)
-   - align-items: center
-   - gap: 5px
 */
 .board {
     /* Your flexbox code here */
@@ -60,8 +56,6 @@ h1 {
 
 /*
    .row should use flexbox to arrange tiles horizontally
-   - display: flex
-   - gap: 5px
 */
 .row {
     /* Your flexbox code here */
@@ -127,10 +121,6 @@ h1 {
 
 /*
    .keyboard should use flexbox to stack key rows vertically
-   - display: flex
-   - flex-direction: column
-   - align-items: center
-   - gap: 8px
 */
 .keyboard {
     margin-top: 20px;
@@ -139,8 +129,6 @@ h1 {
 
 /*
    .keyboard-row should use flexbox to arrange keys horizontally
-   - display: flex
-   - gap: 6px
 */
 .keyboard-row {
     /* Your flexbox code here */

@@ -17,8 +17,8 @@
  *   isFiveLetters("toolong") → false
  */
 function isFiveLetters(guess) {
-    // TODO: Return true if guess has exactly 5 characters
-    return true; // Placeholder - change this!
+  // TODO: Return true if guess has exactly 5 characters
+  return true; // Placeholder - change this!
 }
 
 /**
@@ -35,8 +35,8 @@ function isFiveLetters(guess) {
  *   isValidWord("xyzzy", validWords) → false (if "xyzzy" is not in the set)
  */
 function isValidWord(guess, validWords) {
-    // TODO: Return true if guess is in the validWords set
-    return true; // Placeholder - change this!
+  // TODO: Return true if guess is in the validWords set
+  return true; // Placeholder - change this!
 }
 
 /**
@@ -56,16 +56,16 @@ function isValidWord(guess, validWords) {
  *   checkGuess("brain", "crane") → ["wrong", "correct", "correct", "wrong", "correct"]
  */
 function checkGuess(guess, secretWord) {
-    // TODO: Build and return the feedback array
-    //
-    // Create an empty result array, then loop through each position (0 to 4):
-    //   - If the letter matches the secret word at that position → "correct"
-    //   - Else if the letter exists anywhere in the secret word → "misplaced"
-    //     (Hint: use secretWord.includes(letter))
-    //   - Else → "wrong"
+  // TODO: Build and return the feedback array
+  //
+  // Create an empty result array, then loop through each position (0 to 4):
+  //   - If the letter matches the secret word at that position → "correct"
+  //   - Else if the letter exists anywhere in the secret word → "misplaced"
+  //     (Hint: use secretWord.includes(letter))
+  //   - Else → "wrong"
 
-    // Placeholder - returns all wrong
-    return ["wrong", "wrong", "wrong", "wrong", "wrong"];
+  // Placeholder - returns all wrong
+  return ["wrong", "wrong", "wrong", "wrong", "wrong"];
 }
 
 /**
@@ -80,6 +80,6 @@ function checkGuess(guess, secretWord) {
  *   isWinner("world", "hello") → false
  */
 function isWinner(guess, secretWord) {
-    // TODO: Return true if guess equals secretWord
-    return false; // Placeholder - change this!
+  // TODO: Return true if guess equals secretWord
+  return false; // Placeholder - change this!
 }
