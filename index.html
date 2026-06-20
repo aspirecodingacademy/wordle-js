@@ -1,47 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wordle</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="container">
         <h1>Wordle</h1>
 
-        <!-- TODO: Create the game board -->
-        <!-- The board needs:
-             - A div with class "board"
-             - Inside: 6 row divs (class "row")
-             - Inside each row: 5 tile divs (class "tile")
-        -->
+        <!-- Game Board: 6 rows of 5 tiles -->
         <div class="board">
-            <!-- Your rows and tiles go here -->
+            <div class="row">
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+            </div>
+            <div class="row">
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+            </div>
+            <div class="row">
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+            </div>
+            <div class="row">
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+            </div>
+            <div class="row">
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+            </div>
+            <div class="row">
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+            </div>
         </div>
 
         <!-- Message area for win/lose messages -->
         <div id="message"></div>
 
-        <!-- TODO: Create the keyboard -->
-        <!-- The keyboard needs:
-             - A div with class "keyboard"
-             - 3 rows of buttons:
-               Row 1: Q W E R T Y U I O P
-               Row 2: A S D F G H J K L
-               Row 3: ENTER Z X C V B N M ⌫
-             - Each letter is a <button> with class "key"
-             - ENTER button also has class "wide"
-             - Backspace (⌫) button also has class "wide"
-        -->
+        <button id="new-game-btn" onclick="resetGame()">New Game</button>
+
+        <!-- Keyboard: 3 rows of letter buttons -->
         <div class="keyboard">
-            <!-- Your keyboard rows go here -->
+            <div class="keyboard-row">
+                <button class="key">Q</button>
+                <button class="key">W</button>
+                <button class="key">E</button>
+                <button class="key">R</button>
+                <button class="key">T</button>
+                <button class="key">Y</button>
+                <button class="key">U</button>
+                <button class="key">I</button>
+                <button class="key">O</button>
+                <button class="key">P</button>
+            </div>
+            <div class="keyboard-row">
+                <button class="key">A</button>
+                <button class="key">S</button>
+                <button class="key">D</button>
+                <button class="key">F</button>
+                <button class="key">G</button>
+                <button class="key">H</button>
+                <button class="key">J</button>
+                <button class="key">K</button>
+                <button class="key">L</button>
+            </div>
+            <div class="keyboard-row">
+                <button class="key wide">ENTER</button>
+                <button class="key">Z</button>
+                <button class="key">X</button>
+                <button class="key">C</button>
+                <button class="key">V</button>
+                <button class="key">B</button>
+                <button class="key">N</button>
+                <button class="key">M</button>
+                <button class="key wide">⌫</button>
+            </div>
         </div>
     </div>
 
     <!-- Game scripts - order matters! -->
     <script src="words.js"></script>
-    <script src="game.js"></script>
+    <script src="numbers.js"></script>
+    <script src="my-game.js"></script>
+    <script src="messages.js"></script>
+    <script src="is-five-letters.js"></script>
+    <script src="is-winner.js"></script>
     <script src="app.js"></script>
 </body>
+
 </html>

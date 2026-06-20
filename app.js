@@ -3,12 +3,8 @@
  * DO NOT MODIFY THIS FILE
  *
  * This file handles the game UI and user interactions.
- * It uses the functions from game.js to check guesses.
+ * It uses the functions and variables from config.js and game.js.
  */
-
-// Game constants
-const WORD_LENGTH = 5;
-const MAX_GUESSES = 6;
 
 // Game state
 let currentRow = 0;
@@ -25,12 +21,20 @@ let messageEl = null;
  * Initialize the game when the page loads
  */
 function initGame() {
-    // Pick a random secret word
-    secretWord = SOLUTIONS[Math.floor(Math.random() * SOLUTIONS.length)];
-    console.log("Secret word:", secretWord); // For debugging
+    // Set the page title and header from config
+    document.title = GAME_TITLE;
+    document.querySelector("h1").textContent = GAME_TITLE;
+
+    // Use the secret word from config.js
+    secretWord = SECRET_WORD;
 
     // Get DOM elements
     messageEl = document.getElementById("message");
+    messageEl.textContent = READY_MESSAGE;
+
+    // Set new game button text
+    const btn = document.getElementById("new-game-btn");
+    if (btn) btn.textContent = NEW_GAME_BUTTON_TEXT;
 
     // Get all tiles (6 rows x 5 tiles)
     const rows = document.querySelectorAll(".row");
@@ -127,6 +131,42 @@ function getCurrentGuess() {
 }
 
 /**
+ * Check if the guess is a valid English word
+ */
+function isValidWord(guess) {
+    return VALID_GUESSES.has(guess);
+}
+
+/**
+ * Compare the guess to the secret word and return feedback.
+ * Returns an array of 5 strings: "correct", "misplaced", or "wrong"
+ */
+function checkGuess(guess, secret) {
+    const result = ["wrong", "wrong", "wrong", "wrong", "wrong"];
+    const remaining = secret.split("");
+
+    // Pass 1: find correct (green) matches
+    for (let i = 0; i < WORD_LENGTH; i++) {
+        if (guess[i] === secret[i]) {
+            result[i] = "correct";
+            remaining[i] = null;
+        }
+    }
+
+    // Pass 2: find misplaced (yellow) matches
+    for (let i = 0; i < WORD_LENGTH; i++) {
+        if (result[i] === "correct") continue;
+        const idx = remaining.indexOf(guess[i]);
+        if (idx !== -1) {
+            result[i] = "misplaced";
+            remaining[idx] = null;
+        }
+    }
+
+    return result;
+}
+
+/**
  * Submit the current guess
  */
 function submitGuess() {
@@ -136,14 +176,14 @@ function submitGuess() {
 
     // Check if guess is 5 letters
     if (!isFiveLetters(guess)) {
-        showMessage("Not enough letters");
+        showMessage(MESSAGE_SHORT_WORD);
         shakeRow();
         return;
     }
 
     // Check if guess is a valid word
-    if (!isValidWord(guess, VALID_GUESSES)) {
-        showMessage("Not in word list");
+    if (!isValidWord(guess)) {
+        showMessage(MESSAGE_INVALID_WORD);
         shakeRow();
         return;
     }
@@ -155,10 +195,10 @@ function submitGuess() {
     revealFeedback(feedback);
 
     // Check for win
-    if (isWinner(guess, secretWord)) {
+    if (isWinner(guess)) {
+        gameOver = true;
         setTimeout(() => {
-            gameOver = true;
-            showMessage("Excellent! 🎉");
+            showMessage(WIN_MESSAGE);
             bounceRow();
         }, WORD_LENGTH * 300 + 100);
         return;
@@ -170,8 +210,8 @@ function submitGuess() {
 
     // Check for loss
     if (currentRow >= MAX_GUESSES) {
+        gameOver = true;
         setTimeout(() => {
-            gameOver = true;
             showMessage(`The word was: ${secretWord.toUpperCase()}`);
         }, WORD_LENGTH * 300 + 100);
     }
@@ -249,7 +289,33 @@ function bounceRow() {
     });
 }
 
-// Add shake animation CSS
+/**
+ * Reset the game state and board
+ */
+function resetGame() {
+    currentRow = 0;
+    currentCol = 0;
+    gameOver = false;
+    secretWord = SECRET_WORD;
+
+    // Clear all tiles
+    tiles.forEach((row) => {
+        row.forEach((tile) => {
+            tile.textContent = "";
+            tile.className = "tile";
+        });
+    });
+
+    // Clear keyboard colors
+    Object.values(keys).forEach((key) => {
+        key.classList.remove("correct", "misplaced", "wrong");
+    });
+
+    // Restore ready message
+    if (messageEl) messageEl.textContent = READY_MESSAGE;
+}
+
+// Add shake and bounce animation CSS
 const style = document.createElement("style");
 style.textContent = `
     @keyframes shake {

@@ -43,6 +43,23 @@ h1 {
     font-weight: bold;
 }
 
+#new-game-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: var(--correct);
+    color: var(--text);
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+#new-game-btn:hover {
+    opacity: 0.8;
+}
+
 /* ===========================================
    TODO: BOARD STYLES
    =========================================== */
@@ -51,14 +68,20 @@ h1 {
    .board should use flexbox to stack rows vertically
 */
 .board {
-    /* Your flexbox code here */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 20px;
 }
 
 /*
    .row should use flexbox to arrange tiles horizontally
 */
 .row {
-    /* Your flexbox code here */
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
 }
 
 /* Tile base styles - provided */
@@ -85,7 +108,7 @@ h1 {
    - Add a lighter border color: #565758
 */
 .tile.filled {
-    /* Your code here */
+    border-color: #565758;
 }
 
 /*
@@ -94,7 +117,8 @@ h1 {
    - border-color: use the --correct variable
 */
 .correct {
-    /* Your code here */
+    background-color: var(--correct);
+    border-color: var(--correct);
 }
 
 /*
@@ -103,7 +127,8 @@ h1 {
    - border-color: use the --misplaced variable
 */
 .misplaced {
-    /* Your code here */
+    background-color: var(--misplaced);
+    border-color: var(--misplaced);
 }
 
 /*
@@ -112,7 +137,8 @@ h1 {
    - border-color: use the --wrong variable
 */
 .wrong {
-    /* Your code here */
+    background-color: var(--wrong);
+    border-color: var(--wrong);
 }
 
 /* ===========================================
@@ -124,14 +150,19 @@ h1 {
 */
 .keyboard {
     margin-top: 20px;
-    /* Your flexbox code here */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
 }
 
 /*
    .keyboard-row should use flexbox to arrange keys horizontally
 */
 .keyboard-row {
-    /* Your flexbox code here */
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
 }
 
 /* Key base styles - provided */
