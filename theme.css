@@ -1,0 +1,12 @@
+/* theme.css — make the game your own!
+   Change any color below and the whole game updates.
+*/
+
+:root {
+    --correct: #538d4e;
+    --misplaced: #b59f3b;
+    --wrong: #3a3a3c;
+    --empty: #121213;
+    --text: #ffffff;
+    --key-bg: #818384;
+}

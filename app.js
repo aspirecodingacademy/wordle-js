@@ -3,8 +3,10 @@
  * DO NOT MODIFY THIS FILE
  *
  * This file handles the game UI and user interactions.
- * It uses the functions and variables from config.js and game.js.
+ * It uses the variables from numbers.js, my-game.js, and messages.js.
  */
+
+const WORD_LENGTH = 5;
 
 // Game state
 let currentRow = 0;
@@ -21,12 +23,16 @@ let messageEl = null;
  * Initialize the game when the page loads
  */
 function initGame() {
-    // Set the page title and header from config
+    // Set the page title and header from my-game.js
     document.title = GAME_TITLE;
     document.querySelector("h1").textContent = GAME_TITLE;
 
-    // Use the secret word from config.js
-    secretWord = SECRET_WORD;
+    // Use the secret word from my-game.js (lowercase so case never matters)
+    secretWord = SECRET_WORD.toLowerCase();
+
+    // Make sure the secret word is always guessable, even if it's
+    // not in the standard word list (e.g. a name like "kevin")
+    VALID_GUESSES.add(secretWord);
 
     // Get DOM elements
     messageEl = document.getElementById("message");
@@ -36,13 +42,23 @@ function initGame() {
     const btn = document.getElementById("new-game-btn");
     if (btn) btn.textContent = NEW_GAME_BUTTON_TEXT;
 
-    // Get all tiles (6 rows x 5 tiles)
-    const rows = document.querySelectorAll(".row");
+    // Build the board dynamically based on MAX_GUESSES
+    const board = document.querySelector(".board");
+    board.innerHTML = "";
     tiles = [];
-    rows.forEach((row) => {
-        const rowTiles = row.querySelectorAll(".tile");
-        tiles.push(Array.from(rowTiles));
-    });
+    for (let r = 0; r < MAX_GUESSES; r++) {
+        const row = document.createElement("div");
+        row.classList.add("row");
+        const rowTiles = [];
+        for (let c = 0; c < WORD_LENGTH; c++) {
+            const tile = document.createElement("div");
+            tile.classList.add("tile");
+            row.appendChild(tile);
+            rowTiles.push(tile);
+        }
+        board.appendChild(row);
+        tiles.push(rowTiles);
+    }
 
     // Get keyboard keys
     const keyButtons = document.querySelectorAll(".key");
@@ -174,8 +190,8 @@ function submitGuess() {
 
     const guess = getCurrentGuess();
 
-    // Check if guess is 5 letters
-    if (!isFiveLetters(guess)) {
+    // Check if guess is long enough
+    if (guess.length !== WORD_LENGTH) {
         showMessage(MESSAGE_SHORT_WORD);
         shakeRow();
         return;
@@ -195,7 +211,7 @@ function submitGuess() {
     revealFeedback(feedback);
 
     // Check for win
-    if (isWinner(guess)) {
+    if (guess === secretWord) {
         gameOver = true;
         setTimeout(() => {
             showMessage(WIN_MESSAGE);
@@ -296,15 +312,25 @@ function resetGame() {
     currentRow = 0;
     currentCol = 0;
     gameOver = false;
-    secretWord = SECRET_WORD;
+    secretWord = SECRET_WORD.toLowerCase();
 
-    // Clear all tiles
-    tiles.forEach((row) => {
-        row.forEach((tile) => {
-            tile.textContent = "";
-            tile.className = "tile";
-        });
-    });
+    // Rebuild the board
+    const board = document.querySelector(".board");
+    board.innerHTML = "";
+    tiles = [];
+    for (let r = 0; r < MAX_GUESSES; r++) {
+        const row = document.createElement("div");
+        row.classList.add("row");
+        const rowTiles = [];
+        for (let c = 0; c < WORD_LENGTH; c++) {
+            const tile = document.createElement("div");
+            tile.classList.add("tile");
+            row.appendChild(tile);
+            rowTiles.push(tile);
+        }
+        board.appendChild(row);
+        tiles.push(rowTiles);
+    }
 
     // Clear keyboard colors
     Object.values(keys).forEach((key) => {

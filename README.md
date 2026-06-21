@@ -8,7 +8,6 @@ Click the **"Go Live"** button in the bottom-right corner of VS Code. Your brows
 
 ### 1. `numbers.js` — Fill in the numbers
 
-- `WORD_LENGTH` — how many letters in the secret word
 - `MAX_GUESSES` — how many guesses the player gets
 
 ### 2. `my-game.js` — Set up your game
@@ -24,10 +23,26 @@ Click the **"Go Live"** button in the bottom-right corner of VS Code. Your brows
 - `MESSAGE_INVALID_WORD` — shown when the guess isn't a real word
 - `NEW_GAME_BUTTON_TEXT` — the label on the new game button
 
-### 4. `is-five-letters.js` — Check guess length
+## Make It Yours: Colors
 
-Complete `isFiveLetters(guess)` so it returns `true` if the guess is exactly 5 letters, `false` otherwise.
+Open `theme.css` and change any color to restyle the game — the board, keyboard, and background all update automatically. Colors can be names like `tomato` or hex codes like `#538d4e`.
 
-### 5. `is-winner.js` — Check for a win
+## Bonus Challenge (optional)
 
-Complete `isWinner(guess)` so it returns `true` if the guess matches `SECRET_WORD`, `false` otherwise.
+**Finished early? Try this!**
+
+So far you've only *set* variables. Now you'll *make your own* variable and *use* it inside another one.
+
+In `messages.js`, add a new variable for your name above the win message:
+
+```js
+const PLAYER_NAME = "Alex";
+```
+
+Then rebuild `WIN_MESSAGE` so it uses your variable with `+` (this is called string concatenation):
+
+```js
+const WIN_MESSAGE = "Great job, " + PLAYER_NAME + "!";
+```
+
+Win the game and you should see your personalized message. Try changing `PLAYER_NAME` and watch the message update without touching `WIN_MESSAGE` at all!
