@@ -23,9 +23,14 @@ Click the **"Go Live"** button in the bottom-right corner of VS Code. Your brows
 - `MESSAGE_INVALID_WORD` — shown when the guess isn't a real word
 - `NEW_GAME_BUTTON_TEXT` — the label on the new game button
 
-## Make It Yours: Colors
+## Make It Yours: Styling
 
-Open `theme.css` and change any color to restyle the game — the board, keyboard, and background all update automatically. Colors can be names like `tomato` or hex codes like `#538d4e`.
+Open `theme.css` and change any value to restyle the game — everything updates automatically. You can change:
+
+- **Colors** — names like `tomato` or hex codes like `#538d4e`
+- **Font** — pick from the list of ready-to-use fonts in the file
+- **Tile size** — make the tiles bigger or smaller
+- **Tile roundness** — square corners or rounded corners
 
 ## Bonus Challenge (optional)
 

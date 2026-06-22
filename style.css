@@ -1,12 +1,15 @@
-/* Color variables - use these in your CSS */
+/* Default values - students override these in theme.css */
 :root {
-    --correct: #538d4e;      /* Green - letter is correct */
-    --misplaced: #b59f3b;    /* Yellow - letter is in word but wrong spot */
-    --wrong: #3a3a3c;        /* Dark gray - letter not in word */
-    --empty: #121213;        /* Background color */
-    --border: #3a3a3c;       /* Tile border color */
-    --text: #ffffff;         /* Text color */
-    --key-bg: #818384;       /* Keyboard key background */
+    --correct: #538d4e;          /* Green - letter is correct */
+    --misplaced: #b59f3b;        /* Yellow - letter is in word but wrong spot */
+    --wrong: #3a3a3c;            /* Dark gray - letter not in word */
+    --empty: #121213;            /* Background color */
+    --border: #3a3a3c;           /* Tile border color */
+    --text: #ffffff;             /* Text color */
+    --key-bg: #818384;           /* Keyboard key background */
+    --game-font: 'Arial', sans-serif;  /* Font for the whole game */
+    --tile-size: 62px;           /* Width and height of each tile */
+    --tile-roundness: 0px;       /* Corner roundness of tiles */
 }
 
 /* Base styles - provided */
@@ -19,7 +22,7 @@
 body {
     background-color: var(--empty);
     color: var(--text);
-    font-family: 'Arial', sans-serif;
+    font-family: var(--game-font);
     min-height: 100vh;
 }
 
@@ -86,9 +89,10 @@ h1 {
 
 /* Tile base styles - provided */
 .tile {
-    width: 62px;
-    height: 62px;
+    width: var(--tile-size);
+    height: var(--tile-size);
     border: 2px solid var(--border);
+    border-radius: var(--tile-roundness);
     font-size: 2rem;
     font-weight: bold;
     text-transform: uppercase;

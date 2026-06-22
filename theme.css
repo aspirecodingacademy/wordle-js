@@ -1,12 +1,30 @@
 /* theme.css — make the game your own!
-   Change any color below and the whole game updates.
+   Change any value below and the game updates.
 */
 
 :root {
-    --correct: #538d4e;
-    --misplaced: #b59f3b;
-    --wrong: #3a3a3c;
-    --empty: #121213;
-    --text: #ffffff;
-    --key-bg: #818384;
+    /* ----- COLORS -----
+       Colors can be names like "tomato" or hex codes like "#538d4e". */
+    --correct: #538d4e;      /* color when a letter is in the right spot */
+    --misplaced: #b59f3b;    /* color when a letter is in the word, but wrong spot */
+    --wrong: #3a3a3c;        /* color when a letter is not in the word */
+    --empty: #121213;        /* page background color */
+    --text: #ffffff;         /* text color */
+    --key-bg: #818384;       /* keyboard key color */
+
+    /* ----- FONT -----
+       Pick one of these:
+         "Arial"
+         "Georgia"
+         "Times New Roman"
+         "Courier New"
+         "Trebuchet MS"
+         "Comic Sans MS"
+         "Verdana"
+         "Impact"                  */
+    --game-font: "Arial";
+
+    /* ----- TILES ----- */
+    --tile-size: 62px;       /* how big each tile is (try 50px or 75px) */
+    --tile-roundness: 0px;   /* corner roundness (try 8px or 20px) */
 }
